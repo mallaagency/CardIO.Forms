@@ -5,7 +5,6 @@ using Xamarin.Forms;
 using Malla.CardIO.Android;
 
 [assembly: Dependency(typeof(CardIO))]
-
 namespace Malla.CardIO.Android
 {
     using System.Threading.Tasks;

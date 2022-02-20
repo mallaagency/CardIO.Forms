@@ -4,9 +4,8 @@ using Card.IO;
 using UIKit;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(Malla.CardIO.iOSUnified.CardIO))]
-
-namespace Malla.CardIO.iOSUnified
+[assembly: Dependency(typeof(Malla.CardIO.iOS.CardIO))]
+namespace Malla.CardIO.iOS
 {
 
     /// <summary>

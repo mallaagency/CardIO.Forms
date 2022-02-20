@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Malla.CardIO.iOSUnified
+namespace Malla.CardIO.iOS
 {
     /// <summary>
     /// Extension methods

@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="MSBuild.Sdk.Extras/2.0.41">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;MonoAndroid90;Xamarin.iOS10;</TargetFrameworks>
+    <Authors>Luis Matos</Authors>
+    <Company>Malla Agency</Company>
+    <PackageProjectUrl>https://github.com/mallaagency/CardIO.Forms</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/mallaagency/CardIO.Forms</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>cardio, android, ios, xamarin, forms, xamarin.forms, xamarin forms, card, credit card</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 	
   <!-- If config is debug create debug symbols -->
@@ -24,27 +31,38 @@
   <!-- Create the item groups for the different platforms -->
   <ItemGroup>
     <!-- Include a folder for each platform -->
-    <Folder Include="Platforms\iOS\" />
-    <Folder Include="Platforms\Android\" />
-    <Folder Include="Shared\" />
-    
-    <Compile Include="Shared\**\*.cs" />
-    <!--<None Include="readme.txt" pack="true" PackagePath="." />-->
-    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
+	  <Folder Include="Platforms\iOS\" />
+	  <Folder Include="Platforms\Android\" />
+	  <Folder Include="Shared\" />
+	  
+	  <!--<Compile Include="Shared\**\*.shared.cs" />-->
+	  <Compile Include="Shared\**\*.shared.*.cs" />
+      <!--<None Include="readme.txt" pack="true" PackagePath="." />-->
+      <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
-    <Compile Include="Shared\**\*.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
-    <Compile Include="Platforms\iOS\**\*.cs" />
-    <PackageReference Include="Xamarin.CardIO.iOS" Version="5.4.1" />
+	  <PackageReference Include="Xamarin.CardIO.iOS" Version="5.4.1" />
+	  <!--<Compile Include="Platforms\iOS\**\*.ios.cs" />-->
+	  <Compile Include="Platforms\iOS\**\*.ios.*.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
-    <Compile Include="Platforms\Android\**\*.cs" />
-    <PackageReference Include="Xamarin.CardIO.Android" Version="5.5.1" />
+	  <PackageReference Include="Xamarin.CardIO.Android" Version="5.5.1" />
+	  <!--<Compile Include="Platforms\Android\**\*.android.cs" />-->
+	  <Compile Include="Platforms\Android\**\*.android.*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Mono.Android">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v9.0\Mono.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.iOS">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\Xamarin.iOS\v1.0\Xamarin.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
