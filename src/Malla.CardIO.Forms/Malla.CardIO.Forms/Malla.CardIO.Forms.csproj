@@ -1,7 +1,50 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="MSBuild.Sdk.Extras/2.0.41">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFrameworks>netstandard2.0;MonoAndroid90;Xamarin.iOS10;</TargetFrameworks>
   </PropertyGroup>
+	
+  <!-- If config is debug create debug symbols -->
+  <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <!-- If config is release create a package -->
+  <PropertyGroup Condition=" '$(Configuration)'=='Release' ">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DebugType>pdbonly</DebugType>
+    <!-- sourcelink: Include PDB in the built .nupkg -->
+    <!--<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>-->
+  </PropertyGroup>
+	
+  <!-- Create the item groups for the different platforms -->
+  <ItemGroup>
+    <!-- Include a folder for each platform -->
+    <Folder Include="Platforms\iOS\" />
+    <Folder Include="Platforms\Android\" />
+    <Folder Include="Shared\" />
+    
+    <Compile Include="Shared\**\*.cs" />
+    <!--<None Include="readme.txt" pack="true" PackagePath="." />-->
+    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
+    <Compile Include="Shared\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+    <Compile Include="Platforms\iOS\**\*.cs" />
+    <PackageReference Include="Xamarin.CardIO.iOS" Version="5.4.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+    <Compile Include="Platforms\Android\**\*.cs" />
+    <PackageReference Include="Xamarin.CardIO.Android" Version="5.5.1" />
+  </ItemGroup>
 
 </Project>
