@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BD089ED5-E9D4-48CA-84EF-A4F1993272D7}</ProjectGuid>
+    <ProjectGuid>{33DB350D-5F4F-432E-9D32-9CEFD143513B}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
     <OutputType>Exe</OutputType>
@@ -129,7 +129,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\MallaCardIOSample\MallaCardIOSample.csproj">
-      <Project>{6F537806-7B92-4C3B-B05D-EE6240C4AE6C}</Project>
+      <Project>{16C0A03D-1589-46B5-86DB-DCBED5831AD3}</Project>
       <Name>MallaCardIOSample</Name>
     </ProjectReference>
   </ItemGroup>
