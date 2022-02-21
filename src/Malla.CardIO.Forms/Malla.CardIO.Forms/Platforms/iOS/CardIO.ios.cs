@@ -62,17 +62,20 @@ namespace Malla.CardIO.iOS
 
             return this._result;
         }
+
         /// <summary>
         /// Just to prevent the linker from removing the assembly on iOS
         /// </summary>
         public static void Init()
         { }
+
         /// <inheritdoc/>
         public void UserDidCancelPaymentViewController(CardIOPaymentViewController paymentViewController)
         {
             this._result = new CardIOResult() { Success = false };
             this._finished = true;
         }
+
         /// <inheritdoc/>
         public void UserDidProvideCreditCardInfo(CreditCardInfo cardInfo, CardIOPaymentViewController paymentViewController)
         {
@@ -87,17 +90,20 @@ namespace Malla.CardIO.iOS
             };
             this._finished = true;
         }
+
         /// <inheritdoc/>
         public IntPtr Handle
         {
             get { return this._paymentViewController == null ? IntPtr.Zero : this._paymentViewController.Handle; }
         }
+
         /// <inheritdoc/>
         public void Dispose()
         {
             this.Dispose(true);
             GC.SuppressFinalize(this);
         }
+
         /// <summary>
         /// Diposes the <c>CardIOPaymentViewController</c>
         /// </summary>
