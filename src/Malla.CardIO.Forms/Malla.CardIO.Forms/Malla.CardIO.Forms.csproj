@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;MonoAndroid90;Xamarin.iOS10;</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;MonoAndroid90;Xamarin.iOS10</TargetFrameworks>
     <Authors>Luis Matos</Authors>
     <Company>Malla Agency</Company>
     <PackageProjectUrl>https://github.com/mallaagency/CardIO.Forms</PackageProjectUrl>
@@ -10,7 +10,26 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>cardio, android, ios, xamarin, forms, xamarin.forms, xamarin forms, card, credit card</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright>Copyright (c) 2022 Malla Agency</Copyright>
+    <Description>CardIO Xamarin.Forms implementation for Android and iOS.</Description>
   </PropertyGroup>
+
+    <PropertyGroup>
+	    <AssemblyName>Malla.CardIO</AssemblyName>
+	    <RootNamespace>Malla.CardIO</RootNamespace>
+	    <PackageId>Malla.CardIO.Forms</PackageId>
+	    <Product>$(AssemblyName) ($(TargetFramework))</Product>
+	    <NeutralLanguage>en</NeutralLanguage>
+	    <LangVersion>default</LangVersion>
+	    <DefineConstants>$(DefineConstants);</DefineConstants>
+	    <UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
+	    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+	    <LangVersion>latest</LangVersion>
+	    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+	    <PackOnBuild>true</PackOnBuild>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    </PropertyGroup>
 	
   <!-- If config is debug create debug symbols -->
   <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
@@ -21,11 +40,10 @@
 
   <!-- If config is release create a package -->
   <PropertyGroup Condition=" '$(Configuration)'=='Release' ">
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DebugType>pdbonly</DebugType>
     <!-- sourcelink: Include PDB in the built .nupkg -->
-    <!--<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>-->
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
 	
   <!-- Create the item groups for the different platforms -->
@@ -35,34 +53,24 @@
 	  <Folder Include="Platforms\Android\" />
 	  <Folder Include="Shared\" />
 	  
-	  <!--<Compile Include="Shared\**\*.shared.cs" />-->
-	  <Compile Include="Shared\**\*.shared.*.cs" />
+	  <Compile Include="Shared\**\*.shared.cs" />
       <!--<None Include="readme.txt" pack="true" PackagePath="." />-->
       <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
   </ItemGroup>
+	
+  <ItemGroup Condition="$(TargetFramework.StartsWith('MonoAndroid'))">
+	<PackageReference Include="Xamarin.CardIO.Android" Version="5.5.1" />
+	<Compile Include="Platforms\Android\**\*.android.cs" />
+  </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
 	  <PackageReference Include="Xamarin.CardIO.iOS" Version="5.4.1" />
-	  <!--<Compile Include="Platforms\iOS\**\*.ios.cs" />-->
-	  <Compile Include="Platforms\iOS\**\*.ios.*.cs" />
+	  <Compile Include="Platforms\iOS\**\*.ios.cs" />
   </ItemGroup>
 
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
-	  <PackageReference Include="Xamarin.CardIO.Android" Version="5.5.1" />
-	  <!--<Compile Include="Platforms\Android\**\*.android.cs" />-->
-	  <Compile Include="Platforms\Android\**\*.android.*.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Mono.Android">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v9.0\Mono.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.iOS">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\Xamarin.iOS\v1.0\Xamarin.iOS.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+ 
 
 </Project>
