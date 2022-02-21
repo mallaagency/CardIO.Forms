@@ -78,7 +78,7 @@ namespace Malla.CardIO.iOS
         {
             this._result = new CardIOResult 
             {
-                CreditCardType = cardInfo.CardType.ToPclCardType(),
+                CreditCardType = cardInfo.CardType.ToSharedCardType(),
                 CardNumber = cardInfo.CardNumber,
                 Cvv = cardInfo.Cvv,
                 Expiry = new DateTime((int)cardInfo.ExpiryYear, (int)cardInfo.ExpiryMonth, 1),

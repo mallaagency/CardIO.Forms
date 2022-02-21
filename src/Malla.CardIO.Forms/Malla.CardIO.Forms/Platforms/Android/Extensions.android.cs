@@ -22,7 +22,7 @@ namespace Malla.CardIO.Android
         /// </summary>
         /// <param name="self">Native Android <c>CardType</c> instance</param>
         /// <returns>PCL <c>CardType</c></returns>
-        public static CardType ToPclCardType(this Card.IO.CardType self)
+        public static CardType ToSharedCardType(this Card.IO.CardType self)
         {
             switch (self.Name)
             {

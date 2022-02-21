@@ -40,7 +40,7 @@ namespace Malla.CardIO.Android
                     
                     _currentScan._result = new CardIOResult
                     {
-                        CreditCardType = scanResult.CardType.ToPclCardType(),
+                        CreditCardType = scanResult.CardType.ToSharedCardType(),
                         CardNumber = scanResult.CardNumber,
                         Cvv = scanResult.Cvv,
                         Expiry = new DateTime(scanResult.ExpiryYear, scanResult.ExpiryMonth, 1),

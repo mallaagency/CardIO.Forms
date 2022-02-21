@@ -14,7 +14,7 @@ namespace Malla.CardIO.iOS
         /// </summary>
         /// <param name="self">Native iOS <c>CreditCardType</c> enum</param>
         /// <returns>PCL <c>CardType</c></returns>
-        public static CardType ToPclCardType(this Card.IO.CreditCardType self)
+        public static CardType ToSharedCardType(this Card.IO.CreditCardType self)
         {
             switch (self)
             {
