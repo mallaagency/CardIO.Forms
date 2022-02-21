@@ -17,7 +17,7 @@ namespace Malla.CardIO.Android
     /// </summary>
     public class CardIO : ICardIO
     {
-        private const int ScanActivityResultCode = 20220221;
+        private const int ScanActivityResultCode = 2220;
 
         private static CardIO _currentScan;
         private static Activity _activity;
