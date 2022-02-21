@@ -17,12 +17,22 @@ namespace Malla.CardIO.Android
     /// </summary>
     public class CardIO : ICardIO
     {
-        private const int ScanActivityResultCode = 362814;
+        private const int ScanActivityResultCode = 20220221;
 
         private static CardIO _currentScan;
+        private static Activity _activity;
 
         private CardIOResult _result;
         private bool _finished;
+
+        /// <summary>
+        /// Initialize the <c>CardIO</c> plugin with the activity instance. This is a must!
+        /// </summary>
+        /// <param name="activity">Activity instance</param>
+        public static void Initialize(Activity activity)
+        {
+            _activity = activity;
+        }
 
         /// <summary>
         /// Forwards <c>OnActivityResult</c> to the <c>CardIO</c> plugin. This is a must!
@@ -54,17 +64,19 @@ namespace Malla.CardIO.Android
                 _currentScan._finished = true;
             }
         }
+
         /// <inheritdoc/>
         public async Task<CardIOResult> Scan(CardIOConfig config = null)
         {
-            if (config == null) config = new CardIOConfig();
+            if (config == null) 
+                config = new CardIOConfig();
 
             _currentScan = this;
 
-            var formsActivity = (Activity)Forms.Context;
-            if (formsActivity == null) throw new InvalidOperationException("No Activity found!");
+            if (_activity == null) 
+                throw new InvalidOperationException("No Activity found!");
 
-            Intent scanIntent = new Intent(formsActivity, typeof(CardIOActivity));
+            Intent scanIntent = new Intent(_activity, typeof(CardIOActivity));
 
             scanIntent.PutExtra(CardIOActivity.ExtraRequireExpiry, config.RequireExpiry);
             scanIntent.PutExtra(CardIOActivity.ExtraRequireCvv, config.RequireCvv);
@@ -78,10 +90,11 @@ namespace Malla.CardIO.Android
 
             Device.BeginInvokeOnMainThread(() =>
             {
-                formsActivity.StartActivityForResult(scanIntent, ScanActivityResultCode);
+                _activity.StartActivityForResult(scanIntent, ScanActivityResultCode);
             });
 
-            while (!this._finished) await Task.Delay(100);
+            while (!this._finished) 
+                await Task.Delay(100);
 
             return this._result;
         }
