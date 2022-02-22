@@ -47,13 +47,13 @@ namespace Malla.CardIO.Android
                 if (data != null && data.HasExtra(CardIOActivity.ExtraScanResult))
                 {
                     CreditCard scanResult = (CreditCard)data.GetParcelableExtra(CardIOActivity.ExtraScanResult);
-                    
+
                     _currentScan._result = new CardIOResult
                     {
                         CreditCardType = scanResult.CardType.ToSharedCardType(),
                         CardNumber = scanResult.CardNumber,
                         Cvv = scanResult.Cvv,
-                        Expiry = new DateTime(scanResult.ExpiryYear, scanResult.ExpiryMonth, 1),
+                        Expiry = scanResult.ExpiryYear > 0? new DateTime(scanResult.ExpiryYear, scanResult.ExpiryMonth, 1) : default(DateTime),
                         PostalCode = scanResult.PostalCode,
                         Success = true
                     };
@@ -92,8 +92,8 @@ namespace Malla.CardIO.Android
             scanIntent.PutExtra(CardIOActivity.ExtraRequireCvv, config.RequireCvv);
             scanIntent.PutExtra(CardIOActivity.ExtraRequirePostalCode, config.RequirePostalCode);
             scanIntent.PutExtra(CardIOActivity.ExtraUsePaypalActionbarIcon, config.ShowPaypalLogo);
-            scanIntent.PutExtra(CardIOActivity.ExtraUseCardioLogo, config.ShowCardIOLogo);
-            scanIntent.PutExtra(CardIOActivity.ExtraHideCardioLogo, config.ShowCardIOLogo);
+            scanIntent.PutExtra(CardIOActivity.ExtraUseCardioLogo, config.UseCardIOLogo);
+            scanIntent.PutExtra(CardIOActivity.ExtraHideCardioLogo, config.HideCardIOLogo);
             scanIntent.PutExtra(CardIOActivity.ExtraSuppressManualEntry, config.SuppressManualEntry);
             scanIntent.PutExtra(CardIOActivity.ExtraSuppressConfirmation, config.SuppressConfirmation);
             //scanIntent.PutExtra(CardIOActivity.ExtraReturnCardImage, config.ReturnCardImage);

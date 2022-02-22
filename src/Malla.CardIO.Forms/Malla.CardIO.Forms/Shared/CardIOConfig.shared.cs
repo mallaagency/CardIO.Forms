@@ -17,7 +17,7 @@ namespace Malla.CardIO
         public CardIOConfig()
         {
             this.ShowPaypalLogo = true;
-            this.ShowCardIOLogo = true;
+            this.UseCardIOLogo = true;
             this.RequireExpiry = true;
             this.RequireCvv = false;
             this.RequirePostalCode = false;
@@ -51,7 +51,12 @@ namespace Malla.CardIO
         /// <summary>
         /// Gets/Sets if the CardIO Logo should be displayed
         /// </summary>
-        public bool ShowCardIOLogo { get; set; }
+        public bool UseCardIOLogo { get; set; }
+
+        /// <summary>
+        /// Gets/Sets if the CardIO Logo should be hided
+        /// </summary>
+        public bool HideCardIOLogo { get; set; }
 
         /// <summary>
         /// Gets/Sets if supress manual entry
