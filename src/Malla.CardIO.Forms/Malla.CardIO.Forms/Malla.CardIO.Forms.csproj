@@ -7,7 +7,6 @@
     <Company>Malla Agency</Company>
     <PackageProjectUrl>https://github.com/mallaagency/CardIO.Forms</PackageProjectUrl>
     <RepositoryUrl>https://github.com/mallaagency/CardIO.Forms</RepositoryUrl>
-	<PackageLicenseUrl>https://github.com/mallaagency/CardIO.Forms/blob/main/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>cardio, android, ios, xamarin, forms, xamarin.forms, xamarin forms, card, credit card, scan, scanner</PackageTags>
     <Copyright>© Malla Agency. All rights reserved.</Copyright>
