@@ -21,7 +21,14 @@ namespace MallaCardIOSample
             var config = new CardIOConfig
             {
                 Localization = "es",
-                ShowPaypalLogo = false
+                ShowPaypalLogo = false,
+                RequireExpiry = true,
+                ScanExpiry = true,
+                RequireCvv = true,
+                UseCardIOLogo = true,
+                HideCardIOLogo = true,
+                SuppressManualEntry = true,
+                SuppressConfirmation = true,
             };
 
             var result = await CardIO.Instance.Scan(config);
