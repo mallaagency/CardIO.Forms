@@ -7,12 +7,27 @@
     <Company>Malla Agency</Company>
     <PackageProjectUrl>https://github.com/mallaagency/CardIO.Forms</PackageProjectUrl>
     <RepositoryUrl>https://github.com/mallaagency/CardIO.Forms</RepositoryUrl>
+	<PackageLicenseUrl>https://github.com/mallaagency/CardIO.Forms/blob/main/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>cardio, android, ios, xamarin, forms, xamarin.forms, xamarin forms, card, credit card</PackageTags>
+    <PackageTags>cardio, android, ios, xamarin, forms, xamarin.forms, xamarin forms, card, credit card, scan, scanner</PackageTags>
     <Copyright>© Malla Agency. All rights reserved.</Copyright>
     <Description>Credit card scanning for Xamarin.Forms mobile apps</Description>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<PackageId>Malla.CardIO.Forms</PackageId>
+	<PackageReleaseNotes>
+		CardIO.Forms is a library for Xamarin.Forms Android and iOS that can scan credit card details in from the device's camera similar to a barcode scanner.  CardIO.Form makes scanning and entering Credit Card information simple.
+
+		## Features
+
+		- **Live Camera Card Scanning**: Quick and simple integration.  Get up and running in 5 minutes.
+		- **Optional Manual Entry**: Users can choose to type their credit cards in.  Card.io provides a slick interface for manual card entry.
+		- **Secure**: No credit card information is stored or transmitted.
+		- **Free**: SDK's are free for both Android and iOS.
+
+		## Learn More
+		Learn more about Card.io by visiting http://www.card.io
+	</PackageReleaseNotes>
+	<PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
     <PropertyGroup>
@@ -34,17 +49,16 @@
 	    <PackOnBuild>true</PackOnBuild>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<PackageReleaseNotes>CardIO.Forms is a library for Xamarin.Forms Android and iOS that can scan credit card details in from the device's camera similar to a barcode scanner.  CardIO.Form makes scanning and entering Credit Card information simple.
 
-## Features
+		<!-- Optional: Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 
-- **Live Camera Card Scanning**: Quick and simple integration.  Get up and running in 5 minutes.
-- **Optional Manual Entry**: Users can choose to type their credit cards in.  Card.io provides a slick interface for manual card entry.
-- **Secure**: No credit card information is stored or transmitted.
-- **Free**: SDK's are free for both Android and iOS.
+		<!-- Optional: Embed source files that are not tracked by the source control manager in the PDB -->
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 
-## Learn More
-Learn more about Card.io by visiting http://www.card.io</PackageReleaseNotes>
+		<!-- Optional: Build symbol package (.snupkg) to distribute the PDB containing Source Link -->
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
 	
   <!-- If config is debug create debug symbols -->
@@ -70,6 +84,11 @@ Learn more about Card.io by visiting http://www.card.io</PackageReleaseNotes>
 	  <Folder Include="Shared\" />
 	  
 	  <Compile Include="Shared\**\*.shared.cs" />
+	  
+	  <PackageReference Include="NuGet.CommandLine" Version="6.0.0">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
       <!--<None Include="readme.txt" pack="true" PackagePath="." />-->
       <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
   </ItemGroup>
@@ -87,6 +106,11 @@ Learn more about Card.io by visiting http://www.card.io</PackageReleaseNotes>
 	  <Compile Include="Platforms\iOS\**\*.ios.cs" />
   </ItemGroup>
 
- 
+  <ItemGroup>
+    <None Include="..\..\..\assets\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
