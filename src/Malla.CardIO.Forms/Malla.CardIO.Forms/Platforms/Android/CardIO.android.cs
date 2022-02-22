@@ -103,6 +103,8 @@ namespace Malla.CardIO.Android
             if (!string.IsNullOrEmpty(config.Localization))
                 scanIntent.PutExtra(CardIOActivity.ExtraLanguageOrLocale, config.Localization);
 
+            this._finished = false;
+
             Device.BeginInvokeOnMainThread(() =>
             {
                 _activity.StartActivityForResult(scanIntent, ScanActivityResultCode);
