@@ -88,9 +88,15 @@ namespace Malla.CardIO.Android
             Intent scanIntent = new Intent(_activity, typeof(CardIOActivity));
 
             scanIntent.PutExtra(CardIOActivity.ExtraRequireExpiry, config.RequireExpiry);
+            scanIntent.PutExtra(CardIOActivity.ExtraScanExpiry, config.ScanExpiry);
             scanIntent.PutExtra(CardIOActivity.ExtraRequireCvv, config.RequireCvv);
             scanIntent.PutExtra(CardIOActivity.ExtraRequirePostalCode, config.RequirePostalCode);
             scanIntent.PutExtra(CardIOActivity.ExtraUsePaypalActionbarIcon, config.ShowPaypalLogo);
+            scanIntent.PutExtra(CardIOActivity.ExtraUseCardioLogo, config.ShowCardIOLogo);
+            scanIntent.PutExtra(CardIOActivity.ExtraHideCardioLogo, config.ShowCardIOLogo);
+            scanIntent.PutExtra(CardIOActivity.ExtraSuppressManualEntry, config.SuppressManualEntry);
+            scanIntent.PutExtra(CardIOActivity.ExtraSuppressConfirmation, config.SuppressConfirmation);
+            //scanIntent.PutExtra(CardIOActivity.ExtraReturnCardImage, config.ReturnCardImage);
 
             if (!string.IsNullOrEmpty(config.ScanInstructions))
                 scanIntent.PutExtra(CardIOActivity.ExtraScanInstructions, config.ScanInstructions);
