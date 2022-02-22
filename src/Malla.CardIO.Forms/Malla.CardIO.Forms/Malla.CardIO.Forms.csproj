@@ -27,6 +27,7 @@
 		Learn more about Card.io by visiting http://www.card.io
 	</PackageReleaseNotes>
 	<PackageIcon>icon.png</PackageIcon>
+	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
     <PropertyGroup>
@@ -57,7 +58,8 @@
 
 		<!-- Optional: Build symbol package (.snupkg) to distribute the PDB containing Source Link -->
 		<IncludeSymbols>true</IncludeSymbols>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		
+		<NoWarn>1701;1702;1591;1587</NoWarn>
     </PropertyGroup>
 	
   <!-- If config is debug create debug symbols -->
