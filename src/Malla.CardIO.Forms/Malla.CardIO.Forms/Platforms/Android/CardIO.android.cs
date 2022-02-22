@@ -57,6 +57,15 @@ namespace Malla.CardIO.Android
                         PostalCode = scanResult.PostalCode,
                         Success = true
                     };
+
+                    // Get the Image and card type display name
+                    //var image = scanResult.CardType.ImageBitmap(_activity);
+
+                    //var stream = new System.IO.MemoryStream();
+                    //image.Compress(global::Android.Graphics.Bitmap.CompressFormat.Png, 100, stream);
+                    //image.Recycle();
+
+                    //var displayName = scanResult.CardType.GetDisplayName(null);
                 }
                 else
                     _currentScan._result = new CardIOResult { Success = false };
