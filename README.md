@@ -4,7 +4,7 @@
 
 CardIO.Forms is a library for Xamarin.Forms Android and iOS that can scan credit card details from the device's camera similar to a barcode scanner.  CardIO.Form makes scanning and entering Credit Card information simple.
 
->> CardIO.Forms is an implementation of the old Xamarin Components CardIO binding native libraries for Android and iOS. **Use with your own risk.**
+> CardIO.Forms is an implementation of the old Xamarin Components CardIO binding native libraries for Android and iOS. **Use with your own risk.**
 
 ## Features
 
