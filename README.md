@@ -1,5 +1,7 @@
 # CardIO.Forms
 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](pull/new/master) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-brightgreen.svg?style=flat-square)](graphs/commit-activity) [![Open Source Love png1](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](#contribution) [![licence](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
+
 CardIO.Forms is a library for Xamarin.Forms Android and iOS that can scan credit card details from the device's camera similar to a barcode scanner.  CardIO.Form makes scanning and entering Credit Card information simple.
 
 >> CardIO.Forms is an implementation of the old Xamarin Components CardIO binding native libraries for Android and iOS. **Use with your own risk.**
@@ -13,7 +15,23 @@ CardIO.Forms is a library for Xamarin.Forms Android and iOS that can scan credit
 
 ## Adding CardIO.Forms to your proyect
 
-To get your project working some setup is needed. You will need to initialize the library on each platform in your platform-specific app project.
+To get your project working some setup is needed.
+
+1. Install the package available on Nuget on each platform-specifi project.
+2. Initialize the library on each platform in your platform-specific app project.
+
+### NuGet
+
+- [![NuGet](https://img.shields.io/nuget/v/Malla.CardIO.Forms.svg?label=NuGet)](https://www.nuget.org/packages/Malla.CardIO.Forms/)
+- ![Build status](https://img.shields.io/badge/build-succeded-brightgreen.svg)
+
+#### Platform Support
+
+|Platform|Version|
+| ------------------- | :-----------: |
+|.NET Standard|2.0+|
+|MonoAndroid|9.0+|
+|Xamarin.iOS|1.0+|
 
 ### Android
 
