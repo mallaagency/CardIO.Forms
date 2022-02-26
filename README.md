@@ -66,29 +66,44 @@ On your MainActivity add initialization code:
 
 ```c#
 ...
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+{
+    protected override void OnCreate(Bundle savedInstanceState)
     {
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
-            Malla.CardIO.Android.CardIO.Initialize(this);
+        base.OnCreate(savedInstanceState);
+        Malla.CardIO.Android.CardIO.Initialize(this);
 
-            LoadApplication(new App());
-        }
-        
-        protected override void OnActivityResult(int requestCode, Android.App.Result resultCode, Intent data)
-        {
-            base.OnActivityResult(requestCode, resultCode, data);
-            Malla.CardIO.Android.CardIO.ForwardActivityResult(requestCode, resultCode, data);
-        }
+        LoadApplication(new App());
     }
+    
+    protected override void OnActivityResult(int requestCode, Android.App.Result resultCode, Intent data)
+    {
+        base.OnActivityResult(requestCode, resultCode, data);
+        Malla.CardIO.Android.CardIO.ForwardActivityResult(requestCode, resultCode, data);
+    }
+}
 ...
 ```
 
 ### iOS
 
+Just to prevent the linker from removing the assembly on iOS call the init method in your `AppDelegate` file.
+
 ```c#
-//code here
+...
+public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+{
+    public override bool FinishedLaunching(UIApplication app, NSDictionary options)
+    {
+        global::Xamarin.Forms.Forms.Init();
+        Malla.CardIO.iOS.CardIO.Init();
+
+        LoadApplication(new App());
+
+        return base.FinishedLaunching(app, options);
+    }
+}
+...
 ```
 
 ## Usage
