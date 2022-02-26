@@ -41,6 +41,7 @@ You will need to add permissions that card.io requires to your manifest.
 - `AccessNetworkState`
 - `Internet`
 - `Camera`
+- `Flashlight`
 - `Vibrate`
 
 You can add them directly to the **manifest file**, or you can add the following C# code to your project:
@@ -49,6 +50,7 @@ You can add them directly to the **manifest file**, or you can add the following
 [assembly: UsesPermission(Android.Manifest.Permission.AccessNetworkState)]
 [assembly: UsesPermission(Android.Manifest.Permission.Internet)]
 [assembly: UsesPermission(Android.Manifest.Permission.Camera)]
+[assembly: UsesPermission (Android.Manifest.Permission.Flashlight)]
 [assembly: UsesPermission(Android.Manifest.Permission.Vibrate)]
 ```
 
