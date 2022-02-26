@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+	
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+	<authors>$author$</authors>
+	<owners>$author$</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <icon>icon.png</icon> 
+    <projectUrl>https://github.com/mallaagency/CardIO.Forms/</projectUrl>
+    <description>$description$</description>
+    <releaseNotes>https://github.com/mallaagency/CardIO.Forms/releases</releaseNotes>
+	<summary>CardIO.Forms is a library for Xamarin.Forms Android and iOS that can scan credit card details in from the device's camera similar to a barcode scanner.</summary>
+    <copyright>$copyright$</copyright>
+    <tags>cardio android ios xamarin forms xamarin.forms card credit scan scanner</tags>
+	  
+	<repository type="git" url="https://github.com/mallaagency/CardIO.Forms/"  />
+	  
+    <dependencies>
+		<group targetFramework=".NETStandard2.0">
+			<dependency id="NETStandard.Library" version="2.*" />
+		</group>
+		<group targetFramework="MonoAndroid">
+			<dependency id="Xamarin.CardIO.Android" version="5.5.1" />
+		</group>
+		<group targetFramework="Xamarin.iOS10">
+			<dependency id="Xamarin.CardIO.iOS" version="5.4.1" />
+		</group>
+    </dependencies>
+  </metadata>
+
+	<files>
+		<!-- Cross-platform reference assemblies -->
+		<file src="Malla.CardIO.Forms\bin\Release\Malla.CardIO.Forms.dll" target="lib\netstandard2.0\Malla.CardIO.Forms.dll" />
+		<file src="Malla.CardIO.Forms\bin\Release\Malla.CardIO.Forms.xml" target="lib\netstandard2.0\Malla.CardIO.Forms.xml" />
+		<file src="Malla.CardIO.Forms.Abstractions\bin\Release\Malla.CardIO.Forms.Abstractions.dll" target="lib\netstandard2.0\Malla.CardIO.Forms.Abstractions.dll" />
+		<file src="Malla.CardIO.Forms.Abstractions\bin\Release\Malla.CardIO.Forms.Abstractions.xml" target="lib\netstandard2.0\Malla.CardIO.Forms.Abstractions.xml" />
+
+		<!-- iOS reference assemblies -->
+		<file src="Malla.CardIO.Forms.iOS\bin\Release\Malla.CardIO.Forms.dll" target="lib\Xamarin.iOS10\Malla.CardIO.Forms.dll" />
+		<file src="Malla.CardIO.Forms.iOS\bin\Release\Malla.CardIO.Forms.xml" target="lib\Xamarin.iOS10\Malla.CardIO.Forms.xml" />
+
+		<!-- Android reference assemblies -->
+		<file src="Malla.CardIO.Forms.Android\bin\Release\Malla.CardIO.Forms.dll" target="lib\MonoAndroid90\Malla.CardIO.Forms.dll" />
+		<file src="Malla.CardIO.Forms.Android\bin\Release\Malla.CardIO.Forms.xml" target="lib\MonoAndroid90\Malla.CardIO.Forms.xml" />
+	</files>
+	
+</package>

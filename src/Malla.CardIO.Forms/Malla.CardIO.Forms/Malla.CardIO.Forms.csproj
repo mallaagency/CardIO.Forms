@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
+
+  <PropertyGroup>
+	<!-- Product -->
+    <TargetFrameworks>netstandard2.0;MonoAndroid90;Xamarin.iOS10</TargetFrameworks>
+	<Copyright>© Malla Agency. All rights reserved.</Copyright>
+	<Product>Malla.CardIO</Product>
+	<Version>1.0.0-beta</Version>
+	<LangVersion>default</LangVersion>
+	<NeutralLanguage>en</NeutralLanguage>
+
+	<!-- Package -->
+    <PackageTags>cardio, android, ios, xamarin, forms, xamarin.forms, xamarin forms, card, credit card, scan, scanner</PackageTags>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<PackageId>Malla.CardIO.Forms</PackageId>
+	<PackageReleaseNotes>https://github.com/mallaagency/CardIO.Forms/releases</PackageReleaseNotes>
+	<PackageIcon>icon.png</PackageIcon>
+	<Title>Credit card scanning for Xamarin.Forms mobile apps</Title>
+	<Description>
+CardIO.Forms is a library for Xamarin.Forms Android and iOS that can scan credit card details in from the device's camera similar to a barcode scanner.  CardIO.Form makes scanning and entering Credit Card information simple.
+
+Features
+- Live Camera Card Scanning - Quick and simple integration.  Get up and running in 5 minutes.
+- Optional Manual Entry - Users can choose to type their credit cards in.  Card.io provides a slick interface for manual card entry.
+- Secure - No credit card information is stored or transmitted.
+- Free - SDK's are free for both Android and iOS.
+	</Description>
+	<Summary>CardIO.Forms is a library for Xamarin.Forms Android and iOS that can scan credit card details in from the device's camera similar to a barcode scanner.</Summary>
+	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	  
+	<PackOnBuild>true</PackOnBuild>
+	<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+	<!-- Repository -->
+	<RepositoryType>git</RepositoryType>
+	<PackageProjectUrl>https://github.com/mallaagency/CardIO.Forms</PackageProjectUrl>
+	<RepositoryUrl>https://github.com/mallaagency/CardIO.Forms</RepositoryUrl>
+	  
+	<!-- Authosr: Luis Matos luismts.com && Malla Agency malla.agency -->
+	<Authors>@luismatosluna @mallaagencyRD</Authors>
+	<Company>Malla Agency</Company>
+
+	<!-- Assembly -->
+	<AssemblyName>Malla.CardIO</AssemblyName>
+	<RootNamespace>Malla.CardIO</RootNamespace>
+
+  </PropertyGroup>
+
+  <PropertyGroup>
+		 <!--Don't auto add files for me, I will tell you -->
+	    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+		
+		<NoWarn>1701;1702;1591;1587</NoWarn>
+  </PropertyGroup>
+	
+  <!-- If config is debug create debug symbols -->
+  <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <!-- If config is release create a package -->
+  <PropertyGroup Condition=" '$(Configuration)'=='Release' ">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DebugType>pdbonly</DebugType>
+    <!-- sourcelink: Include PDB in the built .nupkg -->
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+	
+  <!-- Create the item groups for the different platforms -->
+  <ItemGroup>
+    <!-- Include a folder for each platform -->
+	  <Folder Include="Platforms\iOS\" />
+	  <Folder Include="Platforms\Android\" />
+	  <Folder Include="Shared\" />
+	  
+	  <Compile Include="Shared\**\*.shared.cs" />
+	  
+      <!--<None Include="readme.txt" pack="true" PackagePath="." />-->
+      <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
+  </ItemGroup>
+	
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+	<PackageReference Include="Xamarin.CardIO.Android" Version="5.5.1" />
+	<Compile Include="Platforms\Android\**\*.android.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+	  <PackageReference Include="Xamarin.CardIO.iOS" Version="5.4.1" />
+	  <Compile Include="Platforms\iOS\**\*.ios.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\assets\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

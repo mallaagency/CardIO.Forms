@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Malla.CardIO.Forms", "Malla.CardIO.Forms\Malla.CardIO.Forms.csproj", "{82147614-FF90-4224-86E0-431833AB6A21}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|iPhone = Debug|iPhone
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|Any CPU = Release|Any CPU
+		Release|iPhone = Release|iPhone
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82147614-FF90-4224-86E0-431833AB6A21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82147614-FF90-4224-86E0-431833AB6A21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82147614-FF90-4224-86E0-431833AB6A21}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{82147614-FF90-4224-86E0-431833AB6A21}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{82147614-FF90-4224-86E0-431833AB6A21}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{82147614-FF90-4224-86E0-431833AB6A21}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{82147614-FF90-4224-86E0-431833AB6A21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82147614-FF90-4224-86E0-431833AB6A21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82147614-FF90-4224-86E0-431833AB6A21}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{82147614-FF90-4224-86E0-431833AB6A21}.Release|iPhone.Build.0 = Release|Any CPU
+		{82147614-FF90-4224-86E0-431833AB6A21}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{82147614-FF90-4224-86E0-431833AB6A21}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98BA044B-0D15-479F-A0BC-5BD83ECCF699}
+	EndGlobalSection
+EndGlobal
