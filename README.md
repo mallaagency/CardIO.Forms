@@ -30,6 +30,7 @@ To get your project working some setup is needed.
 |Platform|Version|
 | ------------------- | :-----------: |
 |.NET Standard|2.0+|
+|Xamarin.Forms|4.4+|
 |MonoAndroid|9.0+|
 |Xamarin.iOS|1.0+|
 
