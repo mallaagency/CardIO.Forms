@@ -36,6 +36,32 @@ To get your project working some setup is needed.
 
 ### Android
 
+You will need to add permissions that card.io requires to your manifest.  
+
+- `AccessNetworkState`
+- `Internet`
+- `Camera`
+- `Vibrate`
+
+You can add them directly to the **manifest file**, or you can add the following C# code to your project:
+
+```c#
+[assembly: UsesPermission(Android.Manifest.Permission.AccessNetworkState)]
+[assembly: UsesPermission(Android.Manifest.Permission.Internet)]
+[assembly: UsesPermission(Android.Manifest.Permission.Camera)]
+[assembly: UsesPermission(Android.Manifest.Permission.Vibrate)]
+```
+
+You should also declare some of the features your app is using.  Again you can do this directly in the manifest, or by adding this C# code to your project:
+
+```c#
+[assembly: UsesFeature("android.hardware.camera", Required = false)]
+[assembly: UsesFeature("android.hardware.camera.autofocus", Required = false)]
+[assembly: UsesFeature("android.hardware.camera.flash", Required = false)]
+```
+
+On your MainActivity add initialization code:
+
 ```c#
 ...
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
@@ -84,4 +110,4 @@ var result = await CardIO.Instance.Scan(config);
 
 ## Learn More
 
-Learn more about Card.io by visiting http://www.card.io
+Learn more about Card.io by visiting [http://www.card.io](http://www.card.io)
