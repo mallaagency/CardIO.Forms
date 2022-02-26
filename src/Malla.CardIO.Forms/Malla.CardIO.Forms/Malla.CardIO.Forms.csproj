@@ -2,65 +2,58 @@
 <Project Sdk="MSBuild.Sdk.Extras/2.0.54">
 
   <PropertyGroup>
+	<!-- Product -->
     <TargetFrameworks>netstandard2.0;MonoAndroid90;Xamarin.iOS10</TargetFrameworks>
-    <Authors>Luis Matos</Authors>
-    <Company>Malla Agency</Company>
-    <PackageProjectUrl>https://github.com/mallaagency/CardIO.Forms</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/mallaagency/CardIO.Forms</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
+	<Copyright>© Malla Agency. All rights reserved.</Copyright>
+	<Product>Malla.CardIO</Product>
+	<Version>1.0.0-beta</Version>
+	<LangVersion>default</LangVersion>
+	<NeutralLanguage>en</NeutralLanguage>
+
+	<!-- Package -->
     <PackageTags>cardio, android, ios, xamarin, forms, xamarin.forms, xamarin forms, card, credit card, scan, scanner</PackageTags>
-    <Copyright>© Malla Agency. All rights reserved.</Copyright>
-    <Description>Credit card scanning for Xamarin.Forms mobile apps</Description>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<PackageId>Malla.CardIO.Forms</PackageId>
-	<PackageReleaseNotes>
-		CardIO.Forms is a library for Xamarin.Forms Android and iOS that can scan credit card details in from the device's camera similar to a barcode scanner.  CardIO.Form makes scanning and entering Credit Card information simple.
-
-		## Features
-
-		- **Live Camera Card Scanning**: Quick and simple integration.  Get up and running in 5 minutes.
-		- **Optional Manual Entry**: Users can choose to type their credit cards in.  Card.io provides a slick interface for manual card entry.
-		- **Secure**: No credit card information is stored or transmitted.
-		- **Free**: SDK's are free for both Android and iOS.
-
-		## Learn More
-		Learn more about Card.io by visiting http://www.card.io
-	</PackageReleaseNotes>
+	<PackageReleaseNotes>https://github.com/mallaagency/CardIO.Forms/releases</PackageReleaseNotes>
 	<PackageIcon>icon.png</PackageIcon>
+	<Title>Credit card scanning for Xamarin.Forms mobile apps</Title>
+	<Description>
+CardIO.Forms is a library for Xamarin.Forms Android and iOS that can scan credit card details in from the device's camera similar to a barcode scanner.  CardIO.Form makes scanning and entering Credit Card information simple.
+
+Features
+- Live Camera Card Scanning - Quick and simple integration.  Get up and running in 5 minutes.
+- Optional Manual Entry - Users can choose to type their credit cards in.  Card.io provides a slick interface for manual card entry.
+- Secure - No credit card information is stored or transmitted.
+- Free - SDK's are free for both Android and iOS.
+	</Description>
+	<Summary>CardIO.Forms is a library for Xamarin.Forms Android and iOS that can scan credit card details in from the device's camera similar to a barcode scanner.</Summary>
 	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	  
+	<PackOnBuild>true</PackOnBuild>
+	<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+	<!-- Repository -->
+	<RepositoryType>git</RepositoryType>
+	<PackageProjectUrl>https://github.com/mallaagency/CardIO.Forms</PackageProjectUrl>
+	<RepositoryUrl>https://github.com/mallaagency/CardIO.Forms</RepositoryUrl>
+	  
+	<!-- Authosr: Luis Matos luismts.com && Malla Agency malla.agency -->
+	<Authors>@luismatosluna @mallaagencyRD</Authors>
+	<Company>Malla Agency</Company>
+
+	<!-- Assembly -->
+	<AssemblyName>Malla.CardIO</AssemblyName>
+	<RootNamespace>Malla.CardIO</RootNamespace>
+
   </PropertyGroup>
 
-    <PropertyGroup>
-	    <AssemblyName>Malla.CardIO</AssemblyName>
-	    <RootNamespace>Malla.CardIO</RootNamespace>
-	    <Product>$(AssemblyName) ($(TargetFramework))</Product>
-	    <NeutralLanguage>en</NeutralLanguage>
-		
-		<!--Version of C# to use -->
-	    <LangVersion>default</LangVersion>
-		
-		 <!-- Helper to add defines-->
-	    <DefineConstants>$(DefineConstants);</DefineConstants>
-	    <UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
-		
+  <PropertyGroup>
 		 <!--Don't auto add files for me, I will tell you -->
 	    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
 		
-	    <PackOnBuild>true</PackOnBuild>
-		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-
-		<!-- Optional: Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-
-		<!-- Optional: Embed source files that are not tracked by the source control manager in the PDB -->
-		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-
-		<!-- Optional: Build symbol package (.snupkg) to distribute the PDB containing Source Link -->
-		<IncludeSymbols>true</IncludeSymbols>
-		
 		<NoWarn>1701;1702;1591;1587</NoWarn>
-    </PropertyGroup>
+  </PropertyGroup>
 	
   <!-- If config is debug create debug symbols -->
   <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
@@ -86,10 +79,6 @@
 	  
 	  <Compile Include="Shared\**\*.shared.cs" />
 	  
-	  <PackageReference Include="NuGet.CommandLine" Version="6.0.0">
-	    <PrivateAssets>all</PrivateAssets>
-	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	  </PackageReference>
       <!--<None Include="readme.txt" pack="true" PackagePath="." />-->
       <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
   </ItemGroup>

@@ -3,27 +3,16 @@
 	
   <metadata>
     <id>$id$</id>
-    <version>1.0.0</version>
+    <version>$version$</version>
 	<authors>$author$</authors>
 	<owners>$author$</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <icon>icon.png</icon> 
     <projectUrl>https://github.com/mallaagency/CardIO.Forms/</projectUrl>
-    <description>Credit card scanning for Xamarin.Forms mobile apps</description>
-    <releaseNotes>
-		CardIO.Forms is a library for Xamarin.Forms Android and iOS that can scan credit card details in from the device's camera similar to a barcode scanner.  CardIO.Form makes scanning and entering Credit Card information simple.
-
-		## Features
-
-		- **Live Camera Card Scanning**: Quick and simple integration.  Get up and running in 5 minutes.
-		- **Optional Manual Entry**: Users can choose to type their credit cards in.  Card.io provides a slick interface for manual card entry.
-		- **Secure**: No credit card information is stored or transmitted.
-		- **Free**: SDK's are free for both Android and iOS.
-
-		## Learn More
-		Learn more about Card.io by visiting http://www.card.io
-	</releaseNotes>
+    <description>$description$</description>
+    <releaseNotes>https://github.com/mallaagency/CardIO.Forms/releases</releaseNotes>
+	<summary>CardIO.Forms is a library for Xamarin.Forms Android and iOS that can scan credit card details in from the device's camera similar to a barcode scanner.</summary>
     <copyright>$copyright$</copyright>
     <tags>cardio android ios xamarin forms xamarin.forms card credit scan scanner</tags>
 	  
