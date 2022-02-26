@@ -23,6 +23,8 @@ namespace MallaCardIOSample.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            Malla.CardIO.iOS.CardIO.Init();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
