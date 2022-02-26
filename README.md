@@ -62,7 +62,7 @@ You should also declare some of the features your app is using.  Again you can d
 [assembly: UsesFeature("android.hardware.camera.flash", Required = false)]
 ```
 
-On your MainActivity add initialization code:
+On your `MainActivity` add initialization code:
 
 ```c#
 ...
@@ -87,7 +87,7 @@ public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompa
 
 ### iOS
 
-Just to prevent the linker from removing the assembly on iOS call the init method in your `AppDelegate` file.
+Just to prevent the linker from removing the assembly on your `AppDelegate` file add initialization code.
 
 ```c#
 ...
