@@ -13,16 +13,54 @@ CardIO.Forms is a library for Xamarin.Forms Android and iOS that can scan credit
 
 ## Adding CardIO.Forms to your proyect
 
-Instructions here...
+To get your project working some setup is needed. You will need to initialize the library on each platform in your platform-specific app project.
+
+### Android
 
 ```c#
-// code here
+...
+    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    {
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            Malla.CardIO.Android.CardIO.Initialize(this);
+
+            LoadApplication(new App());
+        }
+        
+        protected override void OnActivityResult(int requestCode, Android.App.Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            Malla.CardIO.Android.CardIO.ForwardActivityResult(requestCode, resultCode, data);
+        }
+    }
+...
 ```
 
-Also add this...
+### iOS
 
 ```c#
 //code here
+```
+
+## Usage
+
+```c#
+var config = new CardIOConfig
+{
+    Localization = "es",
+    ShowPaypalLogo = false,
+    RequireExpiry = true,
+    ScanExpiry = true,
+    RequireCvv = true,
+    UseCardIOLogo = true,
+    HideCardIOLogo = true,
+    SuppressManualEntry = true,
+    SuppressConfirmation = true,
+};
+
+var result = await CardIO.Instance.Scan(config);
 ```
 
 ## Learn More
