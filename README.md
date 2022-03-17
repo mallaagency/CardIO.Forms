@@ -1,3 +1,5 @@
+[![card.io logo](https://raw.githubusercontent.com/mallaagency/CardIO.Forms/main/assets/icon.png "CardIO.Forms")](https://malla.agency)
+
 # CardIO.Forms
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](pull/new/master) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-brightgreen.svg?style=flat-square)](graphs/commit-activity) [![Open Source Love png1](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](#contribution) [![licence](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
@@ -5,6 +7,8 @@
 CardIO.Forms is a library for Xamarin.Forms Android and iOS that can scan credit card details from the device's camera similar to a barcode scanner.  CardIO.Form makes scanning and entering Credit Card information simple.
 
 > CardIO.Forms is an implementation of the old Xamarin Components CardIO binding native libraries for Android and iOS. **Use with your own risk.**
+
+[![card.io logo](https://raw.githubusercontent.com/mallaagency/CardIO.Forms/main/assets/card.io_sample.png "CardIO.Forms")](https://malla.agency)
 
 ## Features
 
@@ -85,6 +89,44 @@ public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompa
 ...
 ```
 
+Add this proguard config to your proguard file (proguard.cfg)
+
+```cfg
+# Don't obfuscate DetectionInfo or public fields, since
+# it is used by native methods
+-keep class io.card.payment.DetectionInfo
+-keepclassmembers class io.card.payment.DetectionInfo {
+    public *;
+}
+
+-keep class io.card.payment.CreditCard
+-keep class io.card.payment.CreditCard$1
+-keepclassmembers class io.card.payment.CreditCard {
+  *;
+}
+
+-keepclassmembers class io.card.payment.CardScanner {
+  *** onEdgeUpdate(...);
+}
+
+# Don't mess with classes with native methods
+
+-keepclasseswithmembers class * {
+    native <methods>;
+}
+
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+-keep public class io.card.payment.* {
+    public protected *;
+}
+
+# required to suppress errors when building on android 22
+-dontwarn io.card.payment.CardIOActivity
+```
+
 ### iOS
 
 Just to prevent the linker from removing the assembly on your `AppDelegate` file add initialization code.
@@ -104,6 +146,17 @@ public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsAppli
     }
 }
 ...
+```
+
+Starting in iOS 10, Apple requires that if your app wants to access the camera, your `Info.plist` must specify the reason you wish to access it, which will be displayed to the user when they are prompted to allow or deny your app permission to use the camera.
+
+This means your Info.plist file should contain a string item with a key of `NSCameraUsageDescription` and a value containing a description of why you want to use the camera, to show the user.
+
+Open the `Info.plist` file as source code and add this:
+
+```xml
+<key>NSCameraUsageDescription</key>
+<string>Camera usage description</string>
 ```
 
 ## Usage
