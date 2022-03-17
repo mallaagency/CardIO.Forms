@@ -98,7 +98,7 @@ public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompa
 ...
 ```
 
-Before you build in release mode, make sure to adjust your proguard configuration by adding the following code to your `proguard.cfg` file:
+Before you build in **release mode**, make sure to adjust your proguard configuration by adding the following code to your `proguard.cfg` file:
 
 ```cfg
 # Don't obfuscate DetectionInfo or public fields, since
