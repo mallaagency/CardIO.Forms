@@ -85,6 +85,44 @@ public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompa
 ...
 ```
 
+Add this proguard config to your proguard file (proguard.cfg)
+
+```cfg
+# Don't obfuscate DetectionInfo or public fields, since
+# it is used by native methods
+-keep class io.card.payment.DetectionInfo
+-keepclassmembers class io.card.payment.DetectionInfo {
+    public *;
+}
+
+-keep class io.card.payment.CreditCard
+-keep class io.card.payment.CreditCard$1
+-keepclassmembers class io.card.payment.CreditCard {
+  *;
+}
+
+-keepclassmembers class io.card.payment.CardScanner {
+  *** onEdgeUpdate(...);
+}
+
+# Don't mess with classes with native methods
+
+-keepclasseswithmembers class * {
+    native <methods>;
+}
+
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+-keep public class io.card.payment.* {
+    public protected *;
+}
+
+# required to suppress errors when building on android 22
+-dontwarn io.card.payment.CardIOActivity
+```
+
 ### iOS
 
 Just to prevent the linker from removing the assembly on your `AppDelegate` file add initialization code.
