@@ -40,15 +40,24 @@ To get your project working some setup is needed.
 
 ### Android
 
-You will need to add permissions that card.io requires to your manifest.  
+You will need to add permissions that card.io requires to your `AndroidManifest.xml` file.  
 
-- `AccessNetworkState`
-- `Internet`
-- `Camera`
-- `Flashlight`
-- `Vibrate`
+```xml
+<manifest ... >
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.FLASHLIGHT" />
+	<uses-permission android:name="android.permission.VIBRATE" />
 
-You can add them directly to the **manifest file**, or you can add the following C# code to your project:
+	<!-- Camera features - recommended -->
+	<uses-feature android:name="android.hardware.camera" android:required="false" />
+	<uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+	<uses-feature android:name="android.hardware.camera.flash" android:required="false" />
+</manifest>
+```
+
+Or you can add the following C# code to your project (can be in the `AssemblyInfo.cs` file):
 
 ```c#
 [assembly: UsesPermission(Android.Manifest.Permission.AccessNetworkState)]
@@ -89,7 +98,7 @@ public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompa
 ...
 ```
 
-Add this proguard config to your proguard file (proguard.cfg)
+Add this proguard config to your `proguard.cfg` file:
 
 ```cfg
 # Don't obfuscate DetectionInfo or public fields, since
@@ -129,7 +138,7 @@ Add this proguard config to your proguard file (proguard.cfg)
 
 ### iOS
 
-Just to prevent the linker from removing the assembly on your `AppDelegate` file add initialization code.
+Just to prevent the linker from removing the assembly on your `AppDelegate.cs` file add initialization code.
 
 ```c#
 ...
