@@ -1,3 +1,5 @@
+[![card.io logo](https://raw.githubusercontent.com/mallaagency/CardIO.Forms/main/assets/icon.png "CardIO.Forms")](https://malla.agency)
+
 # CardIO.Forms
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](pull/new/master) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-brightgreen.svg?style=flat-square)](graphs/commit-activity) [![Open Source Love png1](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](#contribution) [![licence](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
@@ -5,6 +7,8 @@
 CardIO.Forms is a library for Xamarin.Forms Android and iOS that can scan credit card details from the device's camera similar to a barcode scanner.  CardIO.Form makes scanning and entering Credit Card information simple.
 
 > CardIO.Forms is an implementation of the old Xamarin Components CardIO binding native libraries for Android and iOS. **Use with your own risk.**
+
+[![card.io logo](https://raw.githubusercontent.com/mallaagency/CardIO.Forms/main/assets/card.io_sample.png "CardIO.Forms")](https://malla.agency)
 
 ## Features
 
