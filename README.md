@@ -144,6 +144,17 @@ public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsAppli
 ...
 ```
 
+Starting in iOS 10, Apple requires that if your app wants to access the camera, your `Info.plist` must specify the reason you wish to access it, which will be displayed to the user when they are prompted to allow or deny your app permission to use the camera.
+
+This means your Info.plist file should contain a string item with a key of `NSCameraUsageDescription` and a value containing a description of why you want to use the camera, to show the user.
+
+Open the `Info.plist` file as source code and add this:
+
+```xml
+<key>NSCameraUsageDescription</key>
+<string>Camera usage description</string>
+```
+
 ## Usage
 
 ```c#
