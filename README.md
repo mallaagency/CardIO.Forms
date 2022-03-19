@@ -17,6 +17,25 @@ CardIO.Forms is a library for Xamarin.Forms Android and iOS that can scan credit
 - **Secure** - No credit card information is stored or transmitted.
 - **Free** - SDK's are free for both Android and iOS.
 
+## Usage
+
+```c#
+var config = new CardIOConfig
+{
+    Localization = "es",
+    ShowPaypalLogo = false,
+    RequireExpiry = true,
+    ScanExpiry = true,
+    RequireCvv = true,
+    UseCardIOLogo = true,
+    HideCardIOLogo = true,
+    SuppressManualEntry = true,
+    SuppressConfirmation = true,
+};
+
+var result = await CardIO.Instance.Scan(config);
+```
+
 ## Adding CardIO.Forms to your proyect
 
 To get your project working some setup is needed.
@@ -98,42 +117,28 @@ public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompa
 ...
 ```
 
+#### Release configuration (Android)
+
 Before you build in **release mode**, make sure to adjust your proguard configuration by adding the following code to your `proguard.cfg` file:
 
 ```cfg
-# Don't obfuscate DetectionInfo or public fields, since
-# it is used by native methods
--keep class io.card.payment.DetectionInfo
--keepclassmembers class io.card.payment.DetectionInfo {
-    public *;
-}
-
--keep class io.card.payment.CreditCard
--keep class io.card.payment.CreditCard$1
--keepclassmembers class io.card.payment.CreditCard {
-  *;
-}
-
--keepclassmembers class io.card.payment.CardScanner {
-  *** onEdgeUpdate(...);
-}
-
-# Don't mess with classes with native methods
-
--keepclasseswithmembers class * {
-    native <methods>;
-}
-
--keepclasseswithmembernames class * {
-    native <methods>;
-}
-
--keep public class io.card.payment.* {
-    public protected *;
-}
+# Don't obfuscate DetectionInfo or public fields, since it is used by native methods
+-keep class io.card.** { *; }
+-keep class com.keepe.** { *; }
+-keepclassmembers class io.card.** { *;}
 
 # required to suppress errors when building on android 22
 -dontwarn io.card.payment.CardIOActivity
+```
+
+Also if you are using the linker you need to add the following code to your `linker.xml` file:
+
+```xml
+<linker>
+   <assembly fullname="Malla.CardIO">
+	<type fullname="*" />
+   </assembly>
+</linker>
 ```
 
 ### iOS
@@ -166,25 +171,6 @@ Open the `Info.plist` file as source code and add this:
 ```xml
 <key>NSCameraUsageDescription</key>
 <string>Camera usage description</string>
-```
-
-## Usage
-
-```c#
-var config = new CardIOConfig
-{
-    Localization = "es",
-    ShowPaypalLogo = false,
-    RequireExpiry = true,
-    ScanExpiry = true,
-    RequireCvv = true,
-    UseCardIOLogo = true,
-    HideCardIOLogo = true,
-    SuppressManualEntry = true,
-    SuppressConfirmation = true,
-};
-
-var result = await CardIO.Instance.Scan(config);
 ```
 
 ## Learn More
